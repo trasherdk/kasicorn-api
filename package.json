@@ -1,5 +1,5 @@
 {
-  "name": "ksbtopupapi",
+  "name": "kasicorn-api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -8,13 +8,17 @@
   },
   "author": "anuwat",
   "license": "ISC",
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
-    "config": "^3.2.4",
-    "figlet": "^1.2.4",
-    "moment": "^2.24.0",
-    "prompt": "^1.0.0",
-    "puppeteer": "^2.0.0",
-    "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.3.0"
+    "config": "^3.3.6",
+    "dotenv": "^10.0.0",
+    "figlet": "^1.5.0",
+    "moment": "^2.29.1",
+    "prompt": "^1.1.0",
+    "puppeteer": "^9.1.1",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
   }
 }
