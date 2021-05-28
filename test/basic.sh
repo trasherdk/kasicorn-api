@@ -1,6 +1,11 @@
 #!/bin/bash
 
+# API_ENDPOINT=https://openapi-sandbox.kasikornbank.com/oauth/token
+# API_HOST=openapi-sandbox.kasikornbank.com
+# API_PORT=443
+# API_PATH=/oauth/token
 source $(dirname $0)/../.env
+
 
 # username (email) encoded
 A1=$( echo "${API_BASIC_ID}" | base64 --wrap=0 )
@@ -16,7 +21,7 @@ AUTH1=$( echo "$A1:$A2" | base64 --wrap=0 )
 AUTH2=$( echo "${API_CONSUMER_ID}:${API_CONSUMER_SECRET}" | base64 --wrap=0 )
 
 # unencoded username and password encoded together
-AUTH3=$( echo "${API_BASIC_ID}:${API_BASIC_SECRET}" | base64 --wrap=0 )
+AUTH3=$( echo "${API_BASIC_ID}:${API_BASIC_SECRET}" | base64 --ignore-garbage --wrap=0 )
 
 B1=$(echo "${CONSUMER_ID}" | base64 --wrap=0)
 echo "B1; $B1"
@@ -42,10 +47,12 @@ esac
 
 echo "Authorization: ($1) Basic ${AUTH}"
 
-curl -X POST \
-		-H "Authorization: Basic ${AUTH}" \
-    --data  '{"grant_type": "client_credentials"}' \
-    ${API_ENDPOINT}
+curl -X POST -H "Authorization: Basic ${AUTH}" --data  '{"grant_type": "client_credentials"}' ${API_ENDPOINT}
+
+#curl -X POST \
+#		-H "Authorization: Basic ${AUTH}" \
+#    --data  '{"grant_type": "client_credentials"}' \
+#    ${API_ENDPOINT}
 
 
 #		-H 'cache-control: no-cache' \
