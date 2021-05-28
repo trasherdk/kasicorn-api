@@ -35,7 +35,7 @@ case "$1" in
   '4') AUTH=$AUTH4 ;;
   '5') AUTH=$AUTH5 ;;
   *)
-    echo "Select one: 1 2 3"
+    echo "Select one: 1 2 3 4 5"
     exit 1
     ;;
 esac
