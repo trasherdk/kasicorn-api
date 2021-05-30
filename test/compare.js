@@ -21,3 +21,14 @@ console.log('Check base64 password', (dec64[1] === kbP64))
 
 console.log('Check clear username', dec64[0].fromBase64())
 console.log('Check clear password', dec64[1].fromBase64())
+
+const API_BASIC_ID = process.env.API_BASIC_ID
+const API_BASIC_SECRET = process.env.API_BASIC_SECRET
+
+const API_CONSUMER_ID = process.env.API_CONSUMER_ID
+const API_CONSUMER_SECRET = process.env.API_CONSUMER_SECRET
+const API_AUTH = Base64.encode(`${API_CONSUMER_ID}:${API_CONSUMER_SECRET}`)
+
+console.log('API User', Base64.encode(API_BASIC_ID), API_CONSUMER_ID)
+console.log('API Pass', Base64.encode(API_BASIC_SECRET), API_CONSUMER_SECRET)
+console.log('API Auth', API_AUTH)

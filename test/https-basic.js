@@ -59,3 +59,7 @@ const authSec = process.env.API_BASIC_SECRET
 
 run(authId, authSec)
 run(process.env.KBUSER, process.env.KBPASS)
+
+const API_CONSUMER_ID = process.env.API_CONSUMER_ID
+const API_CONSUMER_SECRET = process.env.API_CONSUMER_SECRET
+run(API_CONSUMER_ID, API_CONSUMER_SECRET)
