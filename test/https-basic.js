@@ -15,8 +15,8 @@ const run = async (user, pass) => {
   Base64.extendString()
 
   const dec64 = k64.fromBase64().split(':')
-  console.log('Check username', (dec64[0] === u64))
-  console.log('Check password', (dec64[1] === p64))
+  console.log('Check username', (dec64[0] === u64), u64.fromBase64())
+  console.log('Check password', (dec64[1] === p64), p64.fromBase64())
 
   if (dec64[0] !== u64 || dec64[1] !== p64) return false
 
@@ -35,11 +35,13 @@ const run = async (user, pass) => {
   }
 
   console.log(options)
-
+  let result
   const req = https.request(options, res => {
-    console.log(`statusCode: ${res.statusCode}`)
+    console.log(`statusCode: ${res.statusCode} ${res.statusMessage}`)
     res.on('data', d => {
       console.log('onData')
+      result += d
+      // console.log(d.toJSON())
       process.stdout.write(d)
     })
   })
@@ -52,7 +54,10 @@ const run = async (user, pass) => {
 
   req.write(data)
   req.end()
+  console.log(result)
 }
+
+console.clear()
 
 const authId = process.env.API_BASIC_ID
 const authSec = process.env.API_BASIC_SECRET
