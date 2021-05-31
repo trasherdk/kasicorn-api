@@ -35,13 +35,11 @@ const run = async (user, pass) => {
   }
 
   console.log(options)
-  let result
+
   const req = https.request(options, res => {
     console.log(`statusCode: ${res.statusCode} ${res.statusMessage}`)
     res.on('data', d => {
       console.log('onData')
-      result += d
-      // console.log(d.toJSON())
       process.stdout.write(d)
     })
   })
@@ -54,7 +52,6 @@ const run = async (user, pass) => {
 
   req.write(data)
   req.end()
-  console.log(result)
 }
 
 console.clear()
